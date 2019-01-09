@@ -12,7 +12,7 @@ babel-preset-es2015 - необхідно для транспіляції ES6 <br
 src - ісходний код <br>
 dist - конечний код
 
-##Створюємо index.html src/script.js
+##Створюємо index.html src/lesson1-let.js
 ##Видалити з package.json test і замінити на наступний код
 "build": "babel src -d dist --presets es2015" <br>
 "watch": "babel src -d dist --presets es2015 -w" <br>
