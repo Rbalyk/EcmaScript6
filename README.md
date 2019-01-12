@@ -1,4 +1,4 @@
-<h3><b>Цикли For...of і For...in <b></h3>
+<h3><b>Цикли For...of і For...in </b></h3>
 <hr>
  
 <h4><b>For...in</b></h4>
