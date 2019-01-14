@@ -1,22 +1,21 @@
 <h3><b>Змінна Let</b></h3>
 <hr>
-<b>Let має блочну область видимості, для прикладу</b> <br>
-var <br>
-if(true){<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var name = 'Roman Balyk'<br>
-}<br>
+<b>Let</b> має блочну область видимості, для прикладу
+<pre> 
+if(true){
+ var name = 'Roman Balyk'
+}
 console.log(name) - 'Roman Balyk'
+</pre>
 
 
-
-let<br>
-if(true){<br>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; let name2 = 'Roman Balyk'<br>
-}<br>
+<pre>
+if(true){
+  let name2 = 'Roman Balyk'
+}
 console.log(name) - 'undefined'
+</pre>
 
 
 
-
-<b>Також змінна Let не може бути викликана до її обявлення ,навідмінно від var який дасть хочаб undefined;
-</b>
+Також змінна <b>Let</b> не може бути викликана до її обявлення ,навідмінно від var який дасть хочаб undefined;
