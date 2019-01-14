@@ -1,36 +1,101 @@
-<h3><b>В даному репозиторії я зберігаю все що я вивчаю по ES6, уроки в гілках<b></h3>
+<h3><b>Cтрілочні функції або Arrow Function</b></h3>
 <hr>
 
-<h4><b>створення package.json<b></h4>
-npm init -y 
+Вирази стрілочних функцій мають більш короткий синтаксис в
+порівнянні з функціональними виразами і лексично прив'язані до 
+значення this це два фактори вплинули на появу стрілочних функції: 
+більш короткий синтаксис і лексика this.
+<pre>
+let sum = (x,y) => x+ y;
 
-<hr>
-<h4><b>створення node_modules і установка babel<b></h4>
-npm install babel-cli  babel-core babel-preset-es2015 --save-dev <br>
-cli-command line interface(дозволить використовувати команди babel в терміналі)<br>
-babel-core - основний модуль babel<br>
-babel-preset-es2015 - необхідно для транспіляції ES6 <br>
---save -dev - для добалення необхідних модолів у package.json<br>
+let circleDiameter = (radius, number = 2,) => radius * number;
 
-<hr>
-<h4><b>Створюємо папку src і dist<b></h4>
-src - ісходний код <br>
-dist - конечний код
+let giveMeAnswer = () => 42;
 
-<hr>
-<h4><b>Створюємо index.html src/main.js<b></h4>
+let string = () => console.log('Hello World');
 
-<hr>
-<h4><b>Видалити з package.json test і замінити на наступний код:<b></h4>
-"build": "babel src -d dist --presets es2015" <br>
-"watch": "babel src -d dist --presets es2015 -w" <br>
-написали скріпт build <br>
-1).даний скріпт використовує команду babel <br>
-2). вказуємо папку src де знаходиться ісходний код<br>
-3). -d вказує куда помістити кінцевий код відповідно в dist<br>
-4). --presets вказує шо ми транспіліруємо код в ES6<br>
+let multiply = (x,y) => { 
+    let result = x * y;
+    return result;
+};
+Якщо стрілочна функія складається більше ніж 2 стрічок, треба обгортати у фігурні дужки
 
-<hr>
-<h4><b>Запуск<b></h4>
-npm run build - для одноразового білда
-npm run watch - для постійного білда
+
+let person = () => ({name: 'Roman'});
+Якщо стрілочна ссилається на літерали обєкта, треба обгортати у фігурні дужки і у круглі
+
+let personArguments = (name) => ({firstName: name});
+
+console.log(sum(2,3));//5
+console.log(circleDiameter(15));//30
+console.log(giveMeAnswer());//42
+string();//Hello World
+console.log(multiply(3,7));//21
+console.log(person());//{name: "Roman"}
+console.log(personArguments('Roman'));//{name: "Roman"}
+</pre>
+
+
+<b>Стрілочна функія у вигляді IIFE-(Immediately-Invoked Function Expression)</b> - це синтаксична конструкція, що дозволяє викликати функцію зразу ж в місці її визначення
+<pre>
+(function () {
+    console.log('Simple IIFE')
+}());
+
+(() => console.log('ArrowFunction IIFE'))();
+
+(() => {
+    console.log('ArrowFunction IIFE row 1');
+    console.log('ArrowFunction IIFE row 2');
+})();
+</pre>
+
+
+<b>Cтрілочні функції в роботі з масива</b>
+<pre>
+let numbers = [1,2,3,4,5,6,7,8,9,10];
+
+let sumArray = 0;
+
+numbers.forEach(num => sumArray += num);// Сумма елементів масиви
+
+let squared = numbers.map(num => num*num);//Підняти кожне число масиву до квадрата
+
+console.log(sumArray);//55
+console.log(squared);//[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+</pre>
+
+
+<b>Cтрілочні функції в роботі з медодами обєктів</b>
+<pre>
+let singer = {
+    name: 'Michel Jackson',
+    sing: function () {
+        window.setTimeout(() =>{
+            console.log(`My name is ${this.name}`);
+        },1000)
+    }
+};
+singer.sing();
+</pre>
+
+
+Стрілочна функія бере this з контексту,оскільки setTimeout належить до обєкта <b>window</b> без неї <b>this.name</b> буде ссилатися на обєкт <b>window</b> якшо її не використовувати то можна вище оголосити <b>let that = this</b> і тоді використовувати that.name для прикладу транспіліруваний код з стрілочною функцію так і зробив babel: 
+ <pre>
+ var singer = {
+     name: 'Michel Jackson',
+     sing: function sing() {
+         var _this = this;
+         window.setTimeout(function () {
+             console.log('My name is ' + _this.name);
+         },1000);
+     }
+ };
+ singer.sing();//My name is Michel Jackson
+ </pre>
+Зробивши замикання
+
+<b>Стрілочні функції не можна використовувати з</b>
+<pre>
+new,bind(),call(),apply();
+</pre
