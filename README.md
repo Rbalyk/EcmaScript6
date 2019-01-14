@@ -18,7 +18,7 @@ let lang = [...staticLang,'C#','Python',...dynamicLang];
 <b>Приклад з передачі массива як аргумент фунції</b><br>
 Також цей оператор можна використовувати вякості аргумента фунції 
 <pre>
-function sum(x,y,z) {
+function sum(x,y,z) {3
     console.log(x+y+z)
 }
 
