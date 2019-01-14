@@ -2,80 +2,81 @@
 <hr>
  
 <h4><b>For...in</b></h4>
-Цикл перебору по ключах обєкта.<br/>
-let soccerTeamPlayers = ['Roman','Bill','John','Will','Bruce'];<br/>
+Цикл перебору по ключах обєкта.
+<pre>
+let soccerTeamPlayers = ['Roman','Bill','John','Will','Bruce'];
 
-for(let soccerTeamPlayer in soccerTeamPlayers){ <br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(soccerTeamPlayer);<br/>
-}<br/>
+for(let soccerTeamPlayer in soccerTeamPlayers){
+    console.log(soccerTeamPlayer);
+}
 0,1,2,3,4,5
+</pre>
 
-<b>Для того шоб перепрати значення обєкта через for...in:</b><br/>
-for(let index in soccerTeamPlayers){<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(soccerTeamPlayers[index]);<br/>
-}<br/>
+<b>Для того шоб перебрати значення обєкта через for...in:</b>
+<pre>
+for(let index in soccerTeamPlayers){
+   console.log(soccerTeamPlayers[index]);
+}
 Roman,Bill,John,Will,Bruce
+</pre>
 
-<hr>
 <h4><b>For...of</b></h4>
-Цикл перебору по значення ключів обєкта<br/>
-for(let soccerTeamPlayer of soccerTeamPlayers){<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(soccerTeamPlayer)<br/>
-}<br/>
+Цикл перебору по значення ключів обєкта
+<pre>
+for(let soccerTeamPlayer of soccerTeamPlayers){
+    console.log(soccerTeamPlayer)
+}
 Roman,Bill,John,Will,Bruce
+</pre>
 
-<hr>
 <h4><b>forEach</b></h4>
-Метод «arr.forEach (callback [, thisArg])» використовується для перебору масиву. Він для кожного елемента масиву викликає функцію callback. Цій функції він передає три параметра callback (item, i, arr):<br/>
-var arr = ["Яблоко", "Апельсин", "Груша"];<br/>
+Метод <b>«arr.forEach (callback [, thisArg])»</b> використовується для перебору масиву. Він для кожного елемента масиву викликає функцію <b>callback</b>. Цій функції він передає три параметра callback (item, i, arr):
+<pre>
+var arr = ["Яблоко", "Апельсин", "Груша"];
 
-arr.forEach(function(item, i, arr) {<br/>
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log( i + ": " + item + " (массив:" + arr + ")" );<br/>
-});<br/>
-0: Яблоко (массив:Яблоко,Апельсин,Груша)<br/>
-1: Апельсин (массив:Яблоко,Апельсин,Груша)<br/>
-2: Груша (массив:Яблоко,Апельсин,Груша)<br/>
+arr.forEach(function(item, i, arr) {
+   console.log( i + ": " + item + " (массив:" + arr + ")" );
+});
+0: Яблоко (массив:Яблоко,Апельсин,Груша)
+1: Апельсин (массив:Яблоко,Апельсин,Груша)
+2: Груша (массив:Яблоко,Апельсин,Груша)
+</pre>
 
-<hr>
 <h4><b>filter</b></h4>
-Метод «arr.filter (callback [, thisArg])» використовується для фільтрації масиву через функцію. Він створює новий масив, в який увійдуть тільки ті елементи arr, для яких виклик callback (item, i, arr) поверне true.<br/>
-var arr = [1, -1, 2, -2, 3];<br/>
+Метод <b>«arr.filter (callback [, thisArg])»</b> використовується для фільтрації масиву через функцію. Він створює новий масив, в який увійдуть тільки ті елементи arr, для яких виклик <b>callback (item, i, arr)</b> поверне <b>true</b>.
+<pre>
+var arr = [1, -1, 2, -2, 3];
 
-var positiveArr = arr.filter(function(number) {<br/>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return number > 0;<br/>
-});<br/>
-console.log( positiveArr ); <br/>
+var positiveArr = arr.filter(function(number) {
+  return number > 0;
+});
+console.log( positiveArr ); 
  1,2,3
+ </pre>
  
- 
-<hr>
 <h4><b>reduce/reduceRight</b></h4>
-Метод «arr.reduce (callback [, initialValue])» використовується для послідовної обробки кожного елемента масиву із збереженням проміжного результату.
-<br/>
-<br/>
+Метод <b>«arr.reduce (callback [, initialValue])»</b> використовується для послідовної обробки кожного елемента масиву із збереженням проміжного результату.
+<br>
 Це один з найскладніших методів для роботи з масивами. Але його варто освоїти, тому що часом з його допомогою можна в кілька рядків вирішити задачу, яка інакше зажадала б в рази більше місця і часу.
-<br/>
-<br/>
-Метод reduce використовується для обчислення на основі масиву будь-якого єдиного значення, інакше кажуть «для згортки масиву». Трохи далі ми розберемо приклад для обчислення суми.
-<br/>
-<br/>
-Він застосовує функцію callback по черзі до кожного елементу масиву зліва направо, зберігаючи при цьому проміжний результат.
-<br/>
-<br/>
-Аргументи функції callback (previousValue, currentItem, index, arr):
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;previousValue - останній результат виклику функції, він же «проміжний результат».<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;currentItem - поточний елемент масиву, елементи перебираються по черзі зліва-направо.<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index - номер поточного елемента.<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr - оброблюваний масив.<br/><br/>
+<br>
+Метод <b>reduce</b> використовується для обчислення на основі масиву будь-якого єдиного значення, інакше кажуть «для згортки масиву». Трохи далі ми розберемо приклад для обчислення суми.
+<br>
+Він застосовує функцію <b>callback</b> по черзі до кожного елементу масиву зліва направо, зберігаючи при цьому проміжний результат.
+<br>
+Аргументи функції <b>callback (previousValue, currentItem, index, arr):</b><br>
 
-var arr = [1, 2, 3, 4, 5]<br/>
-var result = arr.reduce(function(sum, current) {<br/>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return sum + current;<br/>
-}, 0);<br/>
-console.log( result ); <br/>
-15<br/>
-
+<b>previousValue</b> - останній результат виклику функції, він же «проміжний результат».<br>
+<b>currentItem</b> - поточний елемент масиву, елементи перебираються по черзі зліва-направо.<br>
+<b>index</b> - номер поточного елемента.<br>
+<b>arr</b> - оброблюваний масив.
+<pre>
+var arr = [1, 2, 3, 4, 5]
+var result = arr.reduce(function(sum, current) {
+  return sum + current;
+}, 0);
+console.log( result ); 
+15
+</pre>
 <table>
  <thead>
   <tr>
@@ -119,5 +120,5 @@ console.log( result ); <br/>
  </tbody>
 </table>
 
-Якщо не вказати initialValue у виклику arr.reduce результат буде такий самий тому що при відсутності initialValue в якості першого значення береться перший елемент масиву<br/><br/>
+Якщо не вказати initialValue у виклику arr.reduce результат буде такий самий тому що при відсутності initialValue в якості першого значення береться перший елемент масиву<br>
 Метод <b>arr.reduceRight</b> працює аналогічно, але йде по масиву справа-наліво.
